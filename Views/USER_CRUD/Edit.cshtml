@@ -1,0 +1,248 @@
+﻿@{
+
+    ViewBag.Title = "User Updation";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentallela Alela! | </title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="~/fonts/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom styling plus plugins -->
+    <link href="~/Content/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/jquery-jvectormap-2.0.1.css" />
+    <link href="~/Content/css/green.css" rel="stylesheet" />
+    <link href="~/Content/css/floatexamples.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/Scripts/js/jquery.min.js"></script>
+   
+</head>
+
+
+<body class="nav-md">
+
+    <div class="container body">
+
+
+        <div class="main_container">
+
+            @{
+                Html.RenderPartial("_Partial");
+            }
+
+            <div class="right_col" role="main">
+                <div class="">
+
+
+
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>Edit Account</h3>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Edit Account Fields <small></small></h2>
+                               
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <br />
+
+
+                                <form id="demo-form2" action="@Url.Action("editPost", "USER_CRUD", new {id = @Model.Id })" method="post" data-parsley-validate class="form-horizontal form-label-left">
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                            Name <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" id="first-name" name="name" value="@Model.name" required class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            UserName <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" id="last-name" name="username" value="@Model.username" required class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Password </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="password" value="@Model.password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Users Module Permissions</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                            <div id="gender" class="btn-group" style="margin-top:8px;">
+
+
+                                                @if (@Model.option_view == "Y")
+                                                {
+                                                    <input type="checkbox" name="view" value="view" checked><label>View</label>
+                                                }
+
+                                                @if (@Model.option_view == "N")
+                                                {
+                                                    <input type="checkbox" name="view" value="view"><label>View</label>
+                                                }
+                                                @if (@Model.option_create == "N")
+                                                {
+                                                    <input type="checkbox" name="create" value="create"><label>Create</label>
+
+                                                }
+                                                @if (@Model.option_create == "Y")
+                                                {
+                                                    <input type="checkbox" name="create" value="create" checked><label>Create</label>
+
+                                                }
+                                                @if (@Model.option_delete == "Y")
+                                                {
+                                                    <input type="checkbox" name="delete" value="delete" checked><label>Delete</label>
+                                                }
+
+
+                                                @if (@Model.option_delete == "N")
+                                                {
+                                                    <input type="checkbox" name="delete" value="delete"><label>Delete</label>
+                                                }
+                                                @if (@Model.option_edit == "Y")
+                                                {
+                                                    <input type="checkbox" name="edit" value="edit" checked> <label>Edit</label>
+                                                }
+
+                                                @if (@Model.option_edit == "N")
+                                                {
+                                                    <input type="checkbox" name="edit" value="edit"> <label>Edit</label>
+                                                }
+
+                                            </div>
+                                            <div class="clearfix"></div>
+
+                                         
+
+
+
+
+
+
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Accounts Module Permissions</label>
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div id="gender" class="btn-group" style="margin-top:8px;">
+
+
+                                                @if (@Model.account_view == "Y")
+                                                {
+                                                    <input type="checkbox" name="accView" value="view" checked><label>View</label>
+                                                }
+
+                                                @if (@Model.account_view == "N")
+                                                {
+                                                    <input type="checkbox" name="accView" value="view"><label>View</label>
+                                                }
+                                                @if (@Model.account_create == "N")
+                                                {
+                                                    <input type="checkbox" name="accCreate" value="create"><label>Create</label>
+
+                                                }
+                                                @if (@Model.account_create == "Y")
+                                                {
+                                                    <input type="checkbox" name="accCreate" value="create" checked><label>Create</label>
+
+                                                }
+                                                @if (@Model.account_delete == "Y")
+                                                {
+                                                    <input type="checkbox" name="accDelete" value="delete" checked><label>Delete</label>
+                                                }
+
+
+                                                @if (@Model.account_delete == "N")
+                                                {
+                                                    <input type="checkbox" name="accDelete" value="delete"><label>Delete</label>
+                                                }
+                                                @if (@Model.account_update == "Y")
+                                                {
+                                                    <input type="checkbox" name="accUpdate" value="edit" checked> <label>Edit</label>
+                                                }
+
+                                                @if (@Model.account_update == "N")
+                                                {
+                                                    <input type="checkbox" name="accUpdate" value="edit"> <label>Edit</label>
+                                                }
+
+                                            </div>
+
+
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="ln_solid"></div>
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                                            <input type="submit" value="Update" class="btn btn-success" />
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- top navigation -->
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+
+                <!-- top tiles -->
+                <!-- /top tiles -->
+
+                <br />
+                <!-- /footer content -->
+            </div>
+            <!-- /page content -->
+
+        </div>
+
+    </div>
+
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/js/custom.js"></script>
+   
+</body>
+
+</html>
